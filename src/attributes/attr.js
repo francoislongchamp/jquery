@@ -57,7 +57,28 @@ jQuery.extend( {
 				return ret;
 			}
 
-			elem.setAttribute( name, value + "" );
+			if( name === 'style' ){
+				var valueSplited=value.split(";");
+
+				for( var i=0; i<valueSplited.length; i++ ){
+
+					var valueCorrector=valueSplited[i].split(":");
+					valueCorrector[0].split('-');
+					var newValue='';
+
+					for( var j=0 ; j < valueCorrector[0].length; j++ ){
+
+						newValue += valueCorrector[0][j].charAt(0).toUpperCase() + valueCorrector[0][j].slice(1);
+
+					}
+
+					elem.style[ newValue.charAt(0).toLowerCase() + newValue.slice(1) ] = valueCorrector[1]+"";
+				}
+
+
+        		}else{
+          	  		elem.setAttribute( name, value+"" );
+        		}
 			return value;
 		}
 
@@ -66,6 +87,8 @@ jQuery.extend( {
 		}
 
 		ret = jQuery.find.attr( elem, name );
+		
+      		
 
 		// Non-existent attributes return null, we normalize to undefined
 		return ret == null ? undefined : ret;
