@@ -79,9 +79,9 @@ jQuery.extend( {
 				}
 
 
-      			} else {
+			} else {
 				elem.setAttribute( name, value + "" );
-      			}
+			}
 
 			return value;
 		}
