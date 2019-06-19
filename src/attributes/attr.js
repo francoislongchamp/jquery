@@ -58,42 +58,41 @@ jQuery.extend( {
 			}
 
 			if ( name === "style" ) {
-				var valueC, newValue, stylesSplited = value.split( ";" );
+
+				var objStyle, newStyle, stylesSplited = value.split( ";" );
 
 				for ( var i = 0; i < stylesSplited.length; i++ ) {
 
-					valueC = stylesSplited[ i ].split( ":" );
-					valueC[ 0 ] = valueC[ 0 ].split( "-" );
+					objStyle = stylesSplited[ i ].split( ":" );
+					objStyle[ 0 ] = objStyle[ 0 ].split( "-" );
 
-					newValue = "";
+					newStyle = "";
 
+					for ( var j = 0; j < objStyle[ 0 ].length; j++ ) {
 
-					for ( var j = 0; j < valueC[ 0 ].length; j++ ) {
+						if ( objStyle[ 0 ][ j ] === "" ) {
 
-
-						if ( valueC[ 0 ][ j ] === "" ) {
-
-							newValue += "-";
+							newStyle += "-";
 
 						} else {
 
-							newValue += valueC[ 0 ][ j ].charAt( 0 ).toUpperCase() +
-													valueC[ 0 ][ j ].slice( 1 ).toLowerCase();
+							newStyle += objStyle[ 0 ][ j ].charAt( 0 ).toUpperCase() +
+													objStyle[ 0 ][ j ].slice( 1 ).toLowerCase();
 
 						}
 
 					}
 
-					if ( newValue.charAt( 0 ) === "-" ) {
+					if ( newStyle.charAt( 0 ) === "-" ) {
 
-						elem.style[ newValue.slice( 1 ) ] = valueC[ 1 ] + "";
+						elem.style[ newStyle.slice( 1 ) ] = objStyle[ 1 ] + "";
 
 
 					} else {
 
 						elem.style[
-							newValue.charAt( 0 ).toLowerCase() + newValue.slice( 1 )
-						] = valueC[ 1 ] + "";
+							newStyle.charAt( 0 ).toLowerCase() + newStyle.slice( 1 )
+						] = objStyle[ 1 ] + "";
 
 					}
 				}
