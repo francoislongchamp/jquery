@@ -77,7 +77,7 @@ jQuery.extend( {
 						} else {
 
 							newStyle += objStyle[ 0 ][ j ].charAt( 0 ).toUpperCase() +
-													objStyle[ 0 ][ j ].slice( 1 ).toLowerCase();
+							objStyle[ 0 ][ j ].slice( 1 ).toLowerCase();
 
 						}
 
